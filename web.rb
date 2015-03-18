@@ -9,5 +9,5 @@ post '/' do
   request_payload = JSON.parse request.body.read
 
   #do something with request_payload
-  puts "Text from groupme: "request_payload['text']
+  puts "Text from groupme: " + request_payload['text']
 end
