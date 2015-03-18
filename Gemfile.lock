@@ -34,5 +34,6 @@ PLATFORMS
 
 DEPENDENCIES
   imgur
+  json
   sinatra
   unirest

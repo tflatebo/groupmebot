@@ -1,7 +1,8 @@
 require 'sinatra'
+require 'json'
 
 get '/' do
-  "Hello, world"
+  puts "Hello, world"
 end
 
 post '/' do
@@ -10,4 +11,6 @@ post '/' do
 
   #do something with request_payload
   puts "Text from groupme: " + request_payload['text']
+
+  "Text from groupme: " + request_payload['text']
 end

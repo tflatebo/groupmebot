@@ -3,3 +3,4 @@ ruby "2.1.2"
 gem 'sinatra'
 gem 'unirest'
 gem 'imgur'
+gem 'json'
