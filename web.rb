@@ -5,5 +5,9 @@ get '/' do
 end
 
 post '/' do
-  puts request.body
+  request.body.rewind
+  request_payload = JSON.parse request.body.read
+
+  #do something with request_payload
+  puts "Text from groupme: "request_payload['text']
 end
