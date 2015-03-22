@@ -40,5 +40,6 @@ post '/' do
 
   logger.debug "Text from groupme: " + @request_payload['text']
 
-  post('You said: ' + @request_payload['text'])
+  if(@request_payload['text'].start_with?('john gage') || @request_payload['text'].start_with?('johngage'))
+    post('You said: ' + @request_payload['text'])
 end
