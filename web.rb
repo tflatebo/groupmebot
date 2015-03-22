@@ -26,10 +26,26 @@ helpers do
 end
 
 before do
+
   logger.level = Logger::DEBUG
 
-  request.body.rewind
-  @request_payload = JSON.parse request.body.read
+  begin
+
+    if request.request_method == "POST"
+      puts "request: #{request.request_method}"
+      request.body.rewind
+      @request_payload = JSON.parse request.body.read
+    end
+  rescue
+    message = ''
+    if(env['sinatra.error'])
+      message ||= env['sinatra.error'].message
+    end
+    logger.error("error: #{message}")
+    halt 500
+
+  end
+
 end
 
 get '/' do
