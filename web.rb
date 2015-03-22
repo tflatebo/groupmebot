@@ -41,5 +41,10 @@ post '/' do
   logger.debug "Text from groupme: " + @request_payload['text']
 
   if(@request_payload['text'].start_with?('john gage', 'johngage'))
+    logger.debug "Matched input"
     post('You said: ' + @request_payload['text'])
+  else
+    logger.debug "No match on input"
+  end
+
 end
