@@ -125,7 +125,10 @@ post '/' do
   if(@request_payload['text'].start_with?('john gage', 'johngage'))
     logger.debug "Matched input"
 
-    meme_file = create_meme(@request_payload['text'], '')
+    match = @request_payload['text']
+    match.slice! "johngage"
+
+    meme_file = create_meme(match, '')
 
     # meme_response is byte array
     image_url = upload_image(meme_file)
@@ -133,7 +136,8 @@ post '/' do
     puts "Image: " + image_url
 
     groupme_post = {
-      :text => 'You said: ' + @request_payload['text'],
+      #:text => 'You said: ' + @request_payload['text'],
+      :text => 'Your meme sir',
       :attachments => [
                        {
                          :type => "image",
