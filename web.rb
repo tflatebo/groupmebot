@@ -137,7 +137,7 @@ post '/' do
 
     groupme_post = {
       #:text => 'You said: ' + @request_payload['text'],
-      :text => 'Your meme sir',
+      :text => '',
       :attachments => [
                        {
                          :type => "image",
