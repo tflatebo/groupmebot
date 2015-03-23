@@ -13,9 +13,24 @@ class HelloWorldTest < Test::Unit::TestCase
     #assert_equal 'Hello, World', last_response.body
   end
 
-  def test_accepts_groupme_json
-    post '/', :text => 'foo'
+  def test_post_groupme_no_match
+    post("/", {
+           text: "bob"
+         }.to_json)
+    puts "response: " + last_response.status.to_s
+    puts "response body: " + last_response.body.to_s
     assert last_response.ok?
-    #assert last_response.body.include?('Simon')
+    assert_equal 'No match on input', last_response.body
   end
+
+  def test_post_groupme_match
+    post("/", {
+           text: "johngage foo"
+         }.to_json)
+    puts "response: " + last_response.status.to_s
+    puts "response body: " + last_response.body.to_s
+    assert last_response.ok?
+    assert_equal 'Posted to groupme', last_response.body
+  end
+
 end
